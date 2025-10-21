@@ -10,7 +10,7 @@ const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN)
 export async function getRecipeFromMistral(ingredientsArr) {
         const ingredientsString = ingredientsArr.join(", ")
         try {
-                const response = await hf.chatCompletion({
+                const response = await hf.textGeneration({
                         model: "mistralai/Mixtral-8x7B-Instruct-v0.1",
                         messages: [
                                 { role: "system", content: SYSTEM_PROMPT },
