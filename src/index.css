@@ -31,13 +31,14 @@ main{
 .add-ingredient-form{
   display: flex;
   justify-content: center;
-  height: 38px;
+  align-items: center;
+  padding: 6px 0;
   gap: 12px;
 }
 .add-ingredient-form > input{
   border-radius: 6px;
   border: 1px solid #D1D5DB;
-  padding: 9px 13px;
+  padding: 10px 16px;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   flex-grow: 1;
   min-width: 150px;
@@ -52,6 +53,10 @@ main{
     width: 150px;
     font-size: 0.875rem;
     font-weight: 500;
+    padding: 10px 16px;
+    min-height: 44px;
+    width: auto;
+    cursor: pointer;
 }
 .add-ingredient-form > button::before {
     content: "+";
@@ -98,6 +103,34 @@ ul.ingredients-list > li {
     font-size: 0.875rem;
     cursor: pointer;
 }
+
+.get-recipe-container button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* spinner used inside buttons when loading */
+.get-recipe-container .spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* visually indicate disabled state */
+.get-recipe-container button[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
 .suggested-recipe-container {
     color: #475467;
     line-height: 28px;
@@ -109,7 +142,38 @@ ul.ingredients-list > li {
     margin-bottom: 8px;
 }
 
-/**
-header box shadow code:
-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-*/
+@media (max-width : 500px){
+  .add-ingredient-form{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .add-ingredient-form > button{
+    width: 100%;
+  }
+  .get-recipe-container{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px;
+  }
+  .get-recipe-container > div{
+    width: 100%;
+    text-align: left;
+  }
+  .get-recipe-container h3 {
+    font-size: 1rem;             
+    margin: 0 0 4px 0;
+  }
+
+  .get-recipe-container p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  .get-recipe-container button {
+    width: 100%;                 
+    padding: 12px 16px;         
+    font-size: 1rem;
+  }
+}
